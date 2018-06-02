@@ -1,13 +1,13 @@
 # Project Name
 
-> Project description
+> CavaTable Photos Service 
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/cava-devs/anoop-overviews
+  - https://github.com/cava-devs/anoop-menus
+  - https://github.com/cava-devs/andrew-reservation
+  - https://github.com/cava-devs/chrystal-reviews
 
 ## Table of Contents
 
