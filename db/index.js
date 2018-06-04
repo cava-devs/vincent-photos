@@ -8,13 +8,12 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-const getPhotos = (restaurantID, callback) => {
+const getPhotos = (restaurantID, dataSend) => {
   connection.query(`SELECT url FROM cavatable_photos WHERE restaurant_id = ${restaurantID}`, (err, results) => {
     if (err) {
-      console.log(restaurantID);
-      callback(err, null);
+      dataSend(err, null);
     } else {
-      callback(null, results);
+      dataSend(null, results);
     }
   });
 };
