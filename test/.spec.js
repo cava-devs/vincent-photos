@@ -1,3 +1,5 @@
+import { connection } from 'mongoose';
+
 const request = require('supertest');
 const server = require('../server/server');
 const db = require('../db/index');
