@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    machine:
+    docker:
       - image: circleci/node:6.13.1
       - image: circleci/mysql:5.7
       environment:
@@ -10,8 +10,6 @@ jobs:
           MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_PASSWORD:
-
-    working_directory: ~/vincent-photos
 
     steps:
       - checkout
