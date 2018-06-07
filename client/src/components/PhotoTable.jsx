@@ -1,9 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Photo from './Photo';
 import exampleData from '../../../exampleData';
-
-const PropTypes = require('prop-types');
-
 
 class PhotoTable extends React.Component {
   constructor(props) {
@@ -34,5 +32,9 @@ class PhotoTable extends React.Component {
     );
   }
 }
+
+Photo.propTypes = {
+  photo: PropTypes.object.isRequired,
+};
 
 export default PhotoTable;
