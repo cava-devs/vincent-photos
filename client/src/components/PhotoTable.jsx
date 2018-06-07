@@ -6,7 +6,6 @@ import exampleData from '../../../exampleData';
 class PhotoTable extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       photos: exampleData,
     };
