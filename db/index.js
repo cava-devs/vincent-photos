@@ -19,5 +19,6 @@ const getPhotos = (restaurantID, dataSend) => {
 };
 
 module.exports = {
+  connection,
   getPhotos,
 };
