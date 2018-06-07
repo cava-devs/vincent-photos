@@ -17,6 +17,9 @@ class PhotoTable extends React.Component {
   render() {
     return (
       <div className="photos">
+        <header className="photo-gallery-header">
+          <h1>Photos</h1>
+        </header>
         <ul>
           {
             this.state.photos.map(photo => (
@@ -31,9 +34,5 @@ class PhotoTable extends React.Component {
     );
   }
 }
-
-PhotoTable.propTypes = {
-  photos: PropTypes.array,
-};
 
 export default PhotoTable;
