@@ -9,7 +9,7 @@ const connection = mysql.createConnection({
 connection.connect();
 
 const getPhotos = (restaurantID, dataSend) => {
-  connection.query(`SELECT url FROM cavatable_photos WHERE restaurant_id = ${restaurantID}`, (err, results) => {
+  connection.query(`SELECT id, url FROM cavatable_photos WHERE restaurant_id = ${restaurantID}`, (err, results) => {
     if (err) {
       dataSend(err, null);
     } else {
