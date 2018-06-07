@@ -8,25 +8,28 @@ class PhotoTable extends React.Component {
     super(props);
     this.state = {
       photos: exampleData,
+      photoCount: exampleData.length,
     };
   }
 
   render() {
     return (
       <div className="photos">
-        <header className="photo-gallery-header">
-          <h1>Photos</h1>
+        <header className="photo-gallery-header col-md-4">
+          <h2>{this.state.photoCount} Photos</h2>
         </header>
-        <ul>
-          {
-            this.state.photos.map(photo => (
-              <Photo
-                key={photo.id}
-                photo={photo}
-              />
-            ))
-          }
-        </ul>
+        <section>
+          <div className="container">
+            {
+              this.state.photos.map(photo => (
+                <Photo
+                  key={photo.id}
+                  photo={photo}
+                />
+              ))
+            }
+          </div>
+        </section>
       </div>
     );
   }

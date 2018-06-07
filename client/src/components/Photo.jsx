@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Photo = props => (
-  <div>
-    <li>
+  <div className="row">
+    <div className="col-md-4">
       <img alt="" src={props.photo.url} />
-    </li>
+    </div>
   </div>
 );
 
