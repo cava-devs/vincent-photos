@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 const Photo = props => (
   <div className="row">
-    <div className="col-md-4">
-      <img alt="" src={props.photo.url} />
-    </div>
+    <img alt="" src={props.photo.url} className="img-fluid col-md-4" />
   </div>
 );
 
