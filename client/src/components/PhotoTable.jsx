@@ -1,32 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import Photo from './Photo';
-import exampleData from '../../../exampleData';
 
 class PhotoTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photos: exampleData,
+      photos: [],
+      photoCount: 0,
     };
+    this.servePhotos = this.servePhotos.bind(this);
+  }
+
+  componentDidMount() {
+    this.servePhotos();
+  }
+
+  servePhotos() {
+    axios.get('/restaurant/1001/photos')
+      .then((response) => {
+        this.setState({
+          photos: response.data,
+          photoCount: response.data.length,
+        });
+      });
   }
 
   render() {
     return (
-      <div className="photos">
-        <header className="photo-gallery-header">
-          <h1>Photos</h1>
+      <div>
+        <header className="photo-gallery-header mb-2">
+          <h2>
+            {this.state.photoCount} Photos
+            <a className="view-more" href={(this.state.photos.length - 1).url}>View more</a>
+          </h2>
         </header>
-        <ul>
-          {
-            this.state.photos.map(photo => (
-              <Photo
-                key={photo.id}
-                photo={photo}
-              />
-            ))
-          }
-        </ul>
+        <section>
+          <div className="container">
+            {
+              this.state.photos.map(photo => (
+                <Photo
+                  key={photo.id}
+                  photo={photo}
+                />
+              ))
+            }
+          </div>
+        </section>
       </div>
     );
   }
