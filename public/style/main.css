@@ -1,16 +1,20 @@
-body {
-  display: block;
-}
-
-.container {
-  margin-left: auto;
-  margin-right: auto;
+.view-more {
+  color: rgb(202, 69, 72);
+  font-size: 20px;
+  padding-left: 300px;
 }
 .photo-gallery-header {
   font-family: 'Source Sans Pro', serif;
+  left: 50%;
   font-size: 24px;
   line-height: 32px;
   font-weight: bold;
-  margin: 0 0 10px 0;
+  margin: 50px 200px 0px 200px;
   border-bottom: 1px solid #E1E1E1;
+}
+.flex-column { 
+  max-width : 260px;
+}
+img {
+  margin: 5px;
 }

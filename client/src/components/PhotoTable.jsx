@@ -20,7 +20,6 @@ class PhotoTable extends React.Component {
   servePhotos() {
     axios.get('/restaurant/1001/photos')
       .then((response) => {
-        console.log(response.data);
         this.setState({
           photos: response.data,
           photoCount: response.data.length,
@@ -30,9 +29,12 @@ class PhotoTable extends React.Component {
 
   render() {
     return (
-      <div className="photos">
-        <header className="photo-gallery-header col-md-5 mb-2">
-          <h2>{this.state.photoCount} Photos</h2>
+      <div>
+        <header className="photo-gallery-header mb-2">
+          <h2>
+            {this.state.photoCount} Photos
+            <a className="view-more" href={(this.state.photos.length - 1).url}>View more</a>
+          </h2>
         </header>
         <section>
           <div className="container">
