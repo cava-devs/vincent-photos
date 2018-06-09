@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Photo from './Photo';
+import ViewMore from './ViewMore';
 
 class PhotoTable extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class PhotoTable extends React.Component {
     this.state = {
       photos: [],
       photoCount: 0,
+      photoURL: '',
     };
     this.servePhotos = this.servePhotos.bind(this);
   }
@@ -23,6 +25,7 @@ class PhotoTable extends React.Component {
         this.setState({
           photos: response.data,
           photoCount: response.data.length,
+          photoURL: response.data[response.data.length - 1].url,
         });
       });
   }
@@ -33,7 +36,9 @@ class PhotoTable extends React.Component {
         <header className="photo-gallery-header mb-2">
           <h2>
             {this.state.photoCount} Photos
-            <a className="view-more" href={(this.state.photos.length - 1).url}>View more</a>
+            {this.state.photoCount > 4 &&
+              <ViewMore photoURL={this.state.photoURL} />
+            }
           </h2>
         </header>
         <section>
