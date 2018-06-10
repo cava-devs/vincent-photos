@@ -82,6 +82,19 @@ class PhotoTable extends React.Component {
                   />
                 ))
               }
+              <div className="img-overlay">
+                {
+                  this.state.photos.slice(8, 9).map(photo => (
+                    <Photo
+                      key={photo.id}
+                      photo={photo}
+                    />
+                  ))
+                }
+                <div className="project-overlay">
+                  <p>+ {this.state.photoCount - 8} more</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
