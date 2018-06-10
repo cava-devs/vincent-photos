@@ -1,20 +1,32 @@
 .view-more {
   color: rgb(202, 69, 72);
   font-size: 16px;
-  padding-left: 450px;
+  padding-left: 480px;
 }
 .photo-gallery-header {
   font-family: 'Source Sans Pro', serif;
   font-weight: bolder;
-  left: 50%;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 32px;
-  margin: 50px 400px 0px 400px;
+  margin: 50px 100px 0px 400px;
   border-bottom: 1px solid #E1E1E1;
 }
-.flex-column { 
-  max-width : 260px;
+.col-grid {
+  position: relative;
+  margin: 0;
+  padding: 2px;
+}
+.no-gutter {
+  margin-right: 0;
+  margin-left: 0;
+}
+.no-gutter > [class*="col-"] {
+  padding-right: 0;
+  padding-left: 0;
 }
 img {
-  margin: 5px;
+  padding: 2px;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
 }

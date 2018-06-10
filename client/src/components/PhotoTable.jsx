@@ -20,7 +20,7 @@ class PhotoTable extends React.Component {
   }
 
   servePhotos() {
-    axios.get('/restaurant/1001/photos')
+    axios.get('/restaurant/1077/photos')
       .then((response) => {
         this.setState({
           photos: response.data,
@@ -33,26 +33,58 @@ class PhotoTable extends React.Component {
   render() {
     return (
       <div>
-        <header className="photo-gallery-header mb-2">
+        <div className="photo-gallery-header col-md-6 mb-2">
           <h2>
             {this.state.photoCount} Photos
             {this.state.photoCount > 4 &&
               <ViewMore photoURL={this.state.photoURL} />
             }
           </h2>
-        </header>
-        <section>
-          <div className="container">
-            {
-              this.state.photos.map(photo => (
-                <Photo
-                  key={photo.id}
-                  photo={photo}
-                />
-              ))
-            }
+        </div>
+        <div className="container">
+          <div className="row no-gutter justify-content-center">
+            <div className="text-center col col-lg-3 col-md-4 col-sm-6 col-grid">
+              {
+                this.state.photos.slice(0, 2).map(photo => (
+                  <Photo
+                    key={photo.id}
+                    photo={photo}
+                  />
+                ))
+              }
+            </div>
+            <div className="text-center col col-lg-3 col-md-4 col-sm-6 col-grid">
+              {
+                this.state.photos.slice(2, 3).map(photo => (
+                  <Photo
+                    key={photo.id}
+                    photo={photo}
+                  />
+                ))
+              }
+            </div>
+            <div className="text-center col col-lg-3 col-md-4 col-sm-6 col-grid">
+              {
+                this.state.photos.slice(3, 6).map(photo => (
+                  <Photo
+                    key={photo.id}
+                    photo={photo}
+                  />
+                ))
+              }
+            </div>
+            <div className="text-center col col-lg-3 col-md-4 col-sm-6 col-grid">
+              {
+                this.state.photos.slice(6, 8).map(photo => (
+                  <Photo
+                    key={photo.id}
+                    photo={photo}
+                  />
+                ))
+              }
+            </div>
           </div>
-        </section>
+        </div>
       </div>
     );
   }
