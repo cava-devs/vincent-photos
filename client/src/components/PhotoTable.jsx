@@ -47,7 +47,7 @@ class PhotoTable extends React.Component {
         <div className="container photo-gallery-table">
           <div className="row justify-content-center">
             <div className="photo-col">
-              <div className="photo-gallery-image col-one">
+              <div className="photo-gallery-image">
                 {
                   this.state.photos.slice(0, 1).map(photo => (
                     <Photo
@@ -154,11 +154,10 @@ class PhotoTable extends React.Component {
                   }
                   <div>
                     {this.state.photoCount > 8 &&
-                      <ViewMoreTile photoCount={this.state.photoCount} column="col-four" />
+                      <ViewMoreTile photoCount={this.state.photoCount} photoURL={this.state.photoURL} column="col-four" />
                     }
                   </div>
                 </div>
-
               </div>
             </div>
           </div>

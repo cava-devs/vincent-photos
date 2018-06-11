@@ -78,3 +78,13 @@
   width: 92px;
 
 }
+.zoom {
+  padding: 50px;
+  transition: transform .3s;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+.zoom:hover {
+  transform: scale(1.05);
+}

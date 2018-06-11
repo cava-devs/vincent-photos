@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Photo = props => (
-  <a href={props.photo.url} data-toggle="lightbox" data-gallery="photo-gallery" data-type="image">
-    <img className={`${props.column} img-fluid`} alt="" src={props.photo.url} />
+  <a href={props.photo.url}>
+    <img className={`${props.column} img-fluid zoom`} alt="" src={props.photo.url} />
   </a>
 );
 
