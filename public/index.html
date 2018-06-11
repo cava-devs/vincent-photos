@@ -10,13 +10,16 @@
   <link rel="stylesheet" href="./style/main.css">
 </head>
 
-<body>
+<body id="bootstrap-overrides">
   <main>
     <div id="photo-service">
       <span>Will not show this if React Component renders correctly</span>
     </div>
   </main>
   <script src="./dist/bundle.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script $(document).on( 'click', '[data-toggle="lightbox"]', function(event) { event.preventDefault(); $(this).ekkoLightbox();});></script>
 </body>
 
 </html>

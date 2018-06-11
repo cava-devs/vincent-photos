@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Photo from './Photo';
 import ViewMore from './ViewMore';
+import ViewMoreTile from './ViewMoreTile';
 
 class PhotoTable extends React.Component {
   constructor(props) {
@@ -33,13 +34,15 @@ class PhotoTable extends React.Component {
   render() {
     return (
       <div>
-        <div className="photo-gallery-header col-md-6 mb-2">
-          <h2>
-            {this.state.photoCount} Photos
-            {this.state.photoCount > 4 &&
-              <ViewMore photoURL={this.state.photoURL} />
-            }
-          </h2>
+        <div className="container">
+          <div className="photo-gallery-header col mb-2">
+            <h2>
+              {this.state.photoCount} Photos
+              {this.state.photoCount > 4 &&
+                <ViewMore photoURL={this.state.photoURL} />
+              }
+            </h2>
+          </div>
         </div>
         <div className="container">
           <div className="row no-gutter justify-content-center">
@@ -91,9 +94,12 @@ class PhotoTable extends React.Component {
                     />
                   ))
                 }
-                <div className="project-overlay">
-                  <p>+ {this.state.photoCount - 8} more</p>
+                <div>
+                  {this.state.photoCount > 8 &&
+                    <ViewMoreTile photoCount={this.state.photoCount} />
+                  }
                 </div>
+
               </div>
             </div>
           </div>

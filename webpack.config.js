@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 
 const srcDir = path.join(__dirname, '/client/src');
@@ -63,4 +64,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery',
+    }),
+  ],
 };
