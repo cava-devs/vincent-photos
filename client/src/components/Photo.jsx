@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Photo = props => (
-  <div role="img" onClick={props.onClick}>
+  <button onClick={props.onClick}>
     <img className={`${props.column} img-fluid zoom`} alt="" src={props.photo.url} />
-  </div>
+  </button>
 );
 
 Photo.propTypes = {

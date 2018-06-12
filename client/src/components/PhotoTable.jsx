@@ -48,12 +48,12 @@ class PhotoTable extends React.Component {
 
   onMoveNextRequest() {
     this.setState({
-      photoIndex: (this.state.photoIndex + 1) % this.state.photoCount.length,
+      photoIndex: (this.state.photoIndex + 1) % this.state.photoCount,
     });
   }
 
   servePhotos() {
-    axios.get('/restaurant/1008/photos')
+    axios.get('/restaurant/1077/photos')
       .then((response) => {
         this.setState({
           photos: response.data,
@@ -85,7 +85,10 @@ class PhotoTable extends React.Component {
             <h2>
               {this.state.photoCount} Photos
               {this.state.photoCount > 4 &&
-                <ViewMore photoURL={this.state.photoURL} />
+                <ViewMore
+                  photoURL={this.state.photoURL}
+                  onClick={this.onClick}
+                />
               }
             </h2>
           </div>
@@ -126,6 +129,7 @@ class PhotoTable extends React.Component {
                       key={photo.id}
                       photo={photo}
                       column="col-two"
+                      onClick={this.onClick}
                     />
                   ))
                 }
@@ -139,6 +143,7 @@ class PhotoTable extends React.Component {
                       key={photo.id}
                       photo={photo}
                       column="col-three"
+                      onClick={this.onClick}
                     />
                   ))
                 }
@@ -150,6 +155,7 @@ class PhotoTable extends React.Component {
                       key={photo.id}
                       photo={photo}
                       column="col-three"
+                      onClick={this.onClick}
                     />
                   ))
                 }
@@ -161,6 +167,7 @@ class PhotoTable extends React.Component {
                       key={photo.id}
                       photo={photo}
                       column="col-three"
+                      onClick={this.onClick}
                     />
                   ))
                 }
@@ -174,6 +181,7 @@ class PhotoTable extends React.Component {
                       key={photo.id}
                       photo={photo}
                       column="col-four"
+                      onClick={this.onClick}
                     />
                   ))
                 }
@@ -185,6 +193,7 @@ class PhotoTable extends React.Component {
                       key={photo.id}
                       photo={photo}
                       column="col-four"
+                      onClick={this.onClick}
                     />
                   ))
                 }
@@ -197,12 +206,18 @@ class PhotoTable extends React.Component {
                         key={photo.id}
                         photo={photo}
                         column="col-four"
+                        onClick={this.onClick}
                       />
                     ))
                   }
                   <div>
                     {this.state.photoCount > 8 &&
-                      <ViewMoreTile photoCount={this.state.photoCount} photoURL={this.state.photoURL} column="col-four" />
+                      <ViewMoreTile
+                        photoCount={this.state.photoCount}
+                        photoURL={this.state.photoURL}
+                        column="col-four"
+                        onClick={this.onClick}
+                      />
                     }
                   </div>
                 </div>
@@ -219,8 +234,6 @@ Photo.propTypes = {
   photo: PropTypes.object.isRequired,
   column: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  photoCount: PropTypes.number.isRequired,
-  photoURL: PropTypes.string.isRequired,
 };
 
 export default PhotoTable;
