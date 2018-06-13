@@ -23,6 +23,8 @@ class PhotoTable extends React.Component {
     this.onCloseRequest = this.onCloseRequest.bind(this);
     this.onMovePrevRequest = this.onMovePrevRequest.bind(this);
     this.onMoveNextRequest = this.onMoveNextRequest.bind(this);
+
+    console.log(this.props.match.params.restaurantId);
   }
 
   componentDidMount() {
@@ -65,12 +67,19 @@ class PhotoTable extends React.Component {
   }
 
   servePhotos() {
-    axios.get('/restaurant/1077/photos')
+    axios.get(`/restaurant/${this.props.match.params.restaurantId}/photos`)
       .then((response) => {
+        let conditionalURL;
+
+        if (response.data[8] === undefined) {
+          conditionalURL = null;
+        } else {
+          conditionalURL = response.data[8].url;
+        }
         this.setState({
           photos: response.data,
           photoCount: response.data.length,
-          photoURL: response.data[8].url,
+          photoURL: conditionalURL,
         });
       });
   }
@@ -241,6 +250,12 @@ class PhotoTable extends React.Component {
     );
   }
 }
+
+PhotoTable.propTypes = {
+  match: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired,
+  restaurantId: PropTypes.number.isRequired,
+};
 
 Photo.propTypes = {
   photo: PropTypes.object.isRequired,

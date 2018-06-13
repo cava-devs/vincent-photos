@@ -29,7 +29,6 @@
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.0",
     "react-image-lightbox": "^5.0.0",
-    "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0"
