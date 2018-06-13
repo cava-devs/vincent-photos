@@ -1,47 +1,90 @@
-.view-more {
-  color: rgb(202, 69, 72);
-  font-size: 16px;
-  padding-left: 480px;
-}
-.photo-gallery-header {
+#bootstrap-overrides .photo-gallery-header {
   font-family: 'Source Sans Pro', serif;
   font-weight: bolder;
   font-size: 20px;
   line-height: 32px;
-  margin: 50px 100px 0px 400px;
   border-bottom: 1px solid #E1E1E1;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 53.5%;
 }
-.col-grid {
-  position: relative;
-  margin: 0;
-  padding: 2px;
+#bootstrap-overrides .view-more {
+  color: rgb(202, 69, 72);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  padding-left: 400px;  
+  margin: auto 0 0 0;
 }
-.no-gutter {
-  margin-right: 0;
-  margin-left: 0;
-}
-.no-gutter > [class*="col-"] {
-  padding-right: 0;
-  padding-left: 0;
-}
-.project-overlay {
+#bootstrap-overrides .project-overlay {
   position: absolute;
   font-size: 24px;
+  text-align: center;
   top: 0;
   bottom: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(79, 80, 82, 0.9);
-  color: rgb(218, 211, 211);
+  width: 92px;
+  height: 92px;
+  background-color: rgba(94, 95, 97, 0.9);
+  color: rgb(245, 239, 239);
   padding: 50%;
 }
 .img-overlay {
   position: relative;
-  max-width: 500px;
+  max-width: 92px;
 }
-img {
+#bootstrap-overrides .col-one {
+  width: 139px;
+  height: 139px;
   padding: 2px;
-  width: 300px;
-  height: 300px;
   object-fit: cover;
+}
+#bootstrap-overrides .col-two {
+  width: 276px;
+  height: 276px;
+  padding: 2px;
+  object-fit: cover;
+}
+#bootstrap-overrides .col-three {
+  width: 92px;
+  height: 92px;
+  padding: 2px;
+  object-fit: cover;
+}
+#bootstrap-overrides .col-four {
+  width: 92px;
+  height: 92px;
+  padding: 2px;
+  object-fit: cover;
+}
+.photo-col {
+  display: inline-block;
+  font-size: 0;
+}
+.photo-col:nth-child(1) {
+  width: 139px;
+
+}
+.photo-col:nth-child(2) {
+  width: 276px;
+
+}
+.photo-col:nth-child(3) {
+  width: 92px;
+
+}
+.photo-col:nth-child(4) {
+  width: 92px;
+
+}
+.zoom {
+  padding: 50px;
+  transition: transform .3s;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+.zoom:hover {
+  transform: scale(1.05);
 }
