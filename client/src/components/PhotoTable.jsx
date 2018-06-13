@@ -218,7 +218,7 @@ class PhotoTable extends React.Component {
                 }
               </div>
               <div className="photo-gallery-image">
-                <div className="img-overlay">
+                <div className="photo-img-overlay">
                   {
                     this.state.photos.slice(8, 9).map(photo => (
                       <Photo

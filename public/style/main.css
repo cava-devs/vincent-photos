@@ -10,7 +10,7 @@
   margin-left: auto;
   width: 53.5%;
 }
-#bootstrap-overrides .view-more {
+#bootstrap-overrides .photo-view-more {
   color: rgb(202, 69, 72);
   font-size: 14px;
   line-height: 20px;
@@ -18,7 +18,7 @@
   padding-left: 400px;  
   margin: auto 0 0 0;
 }
-#bootstrap-overrides .project-overlay {
+#bootstrap-overrides .photo-project-overlay {
   position: absolute;
   font-size: 20px;
   text-align: center;
@@ -30,7 +30,7 @@
   color: rgb(245, 239, 239);
   padding: 50%;
 }
-.img-overlay {
+.photo-img-overlay {
   position: relative;
   max-width: 92px;
 }
@@ -78,17 +78,17 @@
   width: 92px;
 
 }
-.zoom {
+.photo-zoom {
   padding: 50px;
   transition: transform .3s;
   width: 100px;
   height: 100px;
   margin: 0 auto;
 }
-.zoom:hover {
+.photo-zoom:hover {
   transform: scale(1.05);
 }
-button {
+.btn-photo {
   background: none;
   color: inherit;
   border: none;
@@ -97,11 +97,11 @@ button {
   cursor: pointer;
   outline: inherit;
 }
-button:active {
+.btn-photo:active {
   outline: none;
   border: none;
   }
   
-button:focus {
+.btn-photo:focus {
   outline: 0;
 }

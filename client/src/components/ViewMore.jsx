@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 const ViewMore = props => (
-  <button className="view-more" src={props.photoURL} onClick={props.onClick}>View more</button>
+  <button className="photo-view-more btn-photo" src={props.photoURL} onClick={props.onClick}>View more</button>
 );
 
 ViewMore.propTypes = {

@@ -9,7 +9,7 @@ module.exports = {
   resolve: { extensions: ['.js', '.jsx'] },
   output: {
     path: distDir,
-    filename: 'bundle.js',
+    filename: 'photoBundle.js',
   },
   module: {
     rules: [
