@@ -31,12 +31,11 @@ class PhotoTable extends React.Component {
   onClick(evt) {
     const el = evt.target.getAttribute('src');
     const elPosition = this.state.photos.map(photo => photo.url).indexOf(el);
-    const selectionIndex = this.state.photos[elPosition];
+
     this.setState({
-      photoIndex: selectionIndex,
+      photoIndex: elPosition,
       isOpen: true,
     });
-    console.log(this.state.photoIndex);
   }
 
   onCloseRequest() {
