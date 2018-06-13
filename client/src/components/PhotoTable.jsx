@@ -23,8 +23,6 @@ class PhotoTable extends React.Component {
     this.onCloseRequest = this.onCloseRequest.bind(this);
     this.onMovePrevRequest = this.onMovePrevRequest.bind(this);
     this.onMoveNextRequest = this.onMoveNextRequest.bind(this);
-
-    console.log(this.props.match.params.restaurantId);
   }
 
   componentDidMount() {
@@ -105,7 +103,7 @@ class PhotoTable extends React.Component {
           <div className="photo-gallery-header mb-2">
             <h2>
               {this.state.photoCount} Photos
-              {this.state.photoCount > 4 &&
+              {this.state.photoCount > 8 &&
                 <ViewMore
                   photoURL={this.state.photoURL}
                   onClick={this.onClick}
@@ -252,9 +250,11 @@ class PhotoTable extends React.Component {
 }
 
 PhotoTable.propTypes = {
-  match: PropTypes.object.isRequired,
-  params: PropTypes.object.isRequired,
-  restaurantId: PropTypes.number.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      restaurantId: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 Photo.propTypes = {
