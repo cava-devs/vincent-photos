@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 import Photo from './Photo';
 import ViewMore from './ViewMore';
 import ViewMoreTile from './ViewMoreTile';
@@ -10,14 +12,48 @@ class PhotoTable extends React.Component {
     super(props);
     this.state = {
       photos: [],
+      photoIndex: 0,
+      isOpen: false,
       photoCount: 0,
       photoURL: '',
     };
     this.servePhotos = this.servePhotos.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.onCloseRequest = this.onCloseRequest.bind(this);
+    this.onMovePrevRequest = this.onMovePrevRequest.bind(this);
+    this.onMoveNextRequest = this.onMoveNextRequest.bind(this);
   }
 
   componentDidMount() {
     this.servePhotos();
+  }
+
+  onClick(evt) {
+    const el = evt.target.getAttribute('src');
+    const elPosition = this.state.photos.map(photo => photo.url).indexOf(el);
+
+    this.setState({
+      photoIndex: elPosition,
+      isOpen: true,
+    });
+  }
+
+  onCloseRequest() {
+    this.setState({
+      isOpen: false,
+    });
+  }
+
+  onMovePrevRequest() {
+    this.setState({
+      photoIndex: (this.state.photoIndex + (this.state.photoCount - 1)) % this.state.photoCount,
+    });
+  }
+
+  onMoveNextRequest() {
+    this.setState({
+      photoIndex: (this.state.photoIndex + 1) % this.state.photoCount,
+    });
   }
 
   servePhotos() {
@@ -26,7 +62,7 @@ class PhotoTable extends React.Component {
         this.setState({
           photos: response.data,
           photoCount: response.data.length,
-          photoURL: response.data[response.data.length - 1].url,
+          photoURL: response.data[8].url,
         });
       });
   }
@@ -34,12 +70,29 @@ class PhotoTable extends React.Component {
   render() {
     return (
       <div>
+        {this.state.isOpen && (
+          <Lightbox
+            mainSrc={this.state.photos[this.state.photoIndex].url}
+            nextSrc={this.state.photos[(this.state.photoIndex + 1) % this.state.photoCount].url}
+            prevSrc={
+              this.state.photos[
+                (this.state.photoIndex + (this.state.photoCount - 1)) % this.state.photoCount
+              ].url
+            }
+            onCloseRequest={this.onCloseRequest}
+            onMovePrevRequest={this.onMovePrevRequest}
+            onMoveNextRequest={this.onMoveNextRequest}
+          />
+        )}
         <div className="container">
           <div className="photo-gallery-header mb-2">
             <h2>
               {this.state.photoCount} Photos
               {this.state.photoCount > 4 &&
-                <ViewMore photoURL={this.state.photoURL} />
+                <ViewMore
+                  photoURL={this.state.photoURL}
+                  onClick={this.onClick}
+                />
               }
             </h2>
           </div>
@@ -54,6 +107,7 @@ class PhotoTable extends React.Component {
                       key={photo.id}
                       photo={photo}
                       column="col-one"
+                      onClick={this.onClick}
                     />
                   ))
                 }
@@ -65,6 +119,7 @@ class PhotoTable extends React.Component {
                       key={photo.id}
                       photo={photo}
                       column="col-one"
+                      onClick={this.onClick}
                     />
                   ))
                 }
@@ -78,6 +133,7 @@ class PhotoTable extends React.Component {
                       key={photo.id}
                       photo={photo}
                       column="col-two"
+                      onClick={this.onClick}
                     />
                   ))
                 }
@@ -91,6 +147,7 @@ class PhotoTable extends React.Component {
                       key={photo.id}
                       photo={photo}
                       column="col-three"
+                      onClick={this.onClick}
                     />
                   ))
                 }
@@ -102,6 +159,7 @@ class PhotoTable extends React.Component {
                       key={photo.id}
                       photo={photo}
                       column="col-three"
+                      onClick={this.onClick}
                     />
                   ))
                 }
@@ -113,6 +171,7 @@ class PhotoTable extends React.Component {
                       key={photo.id}
                       photo={photo}
                       column="col-three"
+                      onClick={this.onClick}
                     />
                   ))
                 }
@@ -126,6 +185,7 @@ class PhotoTable extends React.Component {
                       key={photo.id}
                       photo={photo}
                       column="col-four"
+                      onClick={this.onClick}
                     />
                   ))
                 }
@@ -137,6 +197,7 @@ class PhotoTable extends React.Component {
                       key={photo.id}
                       photo={photo}
                       column="col-four"
+                      onClick={this.onClick}
                     />
                   ))
                 }
@@ -149,12 +210,18 @@ class PhotoTable extends React.Component {
                         key={photo.id}
                         photo={photo}
                         column="col-four"
+                        onClick={this.onClick}
                       />
                     ))
                   }
                   <div>
                     {this.state.photoCount > 8 &&
-                      <ViewMoreTile photoCount={this.state.photoCount} photoURL={this.state.photoURL} column="col-four" />
+                      <ViewMoreTile
+                        photoCount={this.state.photoCount}
+                        photoURL={this.state.photoURL}
+                        column="col-four"
+                        onClick={this.onClick}
+                      />
                     }
                   </div>
                 </div>
@@ -169,6 +236,8 @@ class PhotoTable extends React.Component {
 
 Photo.propTypes = {
   photo: PropTypes.object.isRequired,
+  column: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default PhotoTable;
