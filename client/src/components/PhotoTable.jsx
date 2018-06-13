@@ -19,6 +19,7 @@ class PhotoTable extends React.Component {
     };
     this.servePhotos = this.servePhotos.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.onClickDefault = this.onClickDefault.bind(this);
     this.onCloseRequest = this.onCloseRequest.bind(this);
     this.onMovePrevRequest = this.onMovePrevRequest.bind(this);
     this.onMoveNextRequest = this.onMoveNextRequest.bind(this);
@@ -34,6 +35,13 @@ class PhotoTable extends React.Component {
 
     this.setState({
       photoIndex: elPosition,
+      isOpen: true,
+    });
+  }
+
+  onClickDefault() {
+    this.setState({
+      photoIndex: 8,
       isOpen: true,
     });
   }
@@ -214,13 +222,13 @@ class PhotoTable extends React.Component {
                       />
                     ))
                   }
-                  <div>
+                  <div className="view-more-overlay">
                     {this.state.photoCount > 8 &&
                       <ViewMoreTile
                         photoCount={this.state.photoCount}
                         photoURL={this.state.photoURL}
                         column="col-four"
-                        onClick={this.onClick}
+                        onClickDefault={this.onClickDefault}
                       />
                     }
                   </div>
