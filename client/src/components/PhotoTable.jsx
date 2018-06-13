@@ -28,10 +28,15 @@ class PhotoTable extends React.Component {
     this.servePhotos();
   }
 
-  onClick() {
+  onClick(evt) {
+    const el = evt.target.getAttribute('src');
+    const elPosition = this.state.photos.map(photo => photo.url).indexOf(el);
+    const selectionIndex = this.state.photos[elPosition];
     this.setState({
+      photoIndex: selectionIndex,
       isOpen: true,
     });
+    console.log(this.state.photoIndex);
   }
 
   onCloseRequest() {
@@ -58,7 +63,7 @@ class PhotoTable extends React.Component {
         this.setState({
           photos: response.data,
           photoCount: response.data.length,
-          photoURL: response.data[response.data.length - 1].url,
+          photoURL: response.data[8].url,
         });
       });
   }
