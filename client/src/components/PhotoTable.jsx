@@ -19,6 +19,7 @@ class PhotoTable extends React.Component {
     };
     this.servePhotos = this.servePhotos.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.onClickDefault = this.onClickDefault.bind(this);
     this.onCloseRequest = this.onCloseRequest.bind(this);
     this.onMovePrevRequest = this.onMovePrevRequest.bind(this);
     this.onMoveNextRequest = this.onMoveNextRequest.bind(this);
@@ -34,6 +35,13 @@ class PhotoTable extends React.Component {
 
     this.setState({
       photoIndex: elPosition,
+      isOpen: true,
+    });
+  }
+
+  onClickDefault() {
+    this.setState({
+      photoIndex: 8,
       isOpen: true,
     });
   }
@@ -57,12 +65,19 @@ class PhotoTable extends React.Component {
   }
 
   servePhotos() {
-    axios.get('/restaurant/1077/photos')
+    axios.get(`photos/restaurant/${this.props.match.params.restaurantId}/photos`)
       .then((response) => {
+        let conditionalURL;
+
+        if (response.data[8] === undefined) {
+          conditionalURL = null;
+        } else {
+          conditionalURL = response.data[8].url;
+        }
         this.setState({
           photos: response.data,
           photoCount: response.data.length,
-          photoURL: response.data[8].url,
+          photoURL: conditionalURL,
         });
       });
   }
@@ -88,7 +103,7 @@ class PhotoTable extends React.Component {
           <div className="photo-gallery-header mb-2">
             <h2>
               {this.state.photoCount} Photos
-              {this.state.photoCount > 4 &&
+              {this.state.photoCount > 8 &&
                 <ViewMore
                   photoURL={this.state.photoURL}
                   onClick={this.onClick}
@@ -203,7 +218,7 @@ class PhotoTable extends React.Component {
                 }
               </div>
               <div className="photo-gallery-image">
-                <div className="img-overlay">
+                <div className="photo-img-overlay">
                   {
                     this.state.photos.slice(8, 9).map(photo => (
                       <Photo
@@ -214,13 +229,13 @@ class PhotoTable extends React.Component {
                       />
                     ))
                   }
-                  <div>
+                  <div className="view-more-overlay">
                     {this.state.photoCount > 8 &&
                       <ViewMoreTile
                         photoCount={this.state.photoCount}
                         photoURL={this.state.photoURL}
                         column="col-four"
-                        onClick={this.onClick}
+                        onClickDefault={this.onClickDefault}
                       />
                     }
                   </div>
@@ -233,6 +248,14 @@ class PhotoTable extends React.Component {
     );
   }
 }
+
+PhotoTable.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      restaurantId: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 Photo.propTypes = {
   photo: PropTypes.object.isRequired,

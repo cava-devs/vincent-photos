@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Photo = props => (
-  <button onClick={evt => props.onClick(evt, props.index)}>
-    <img className={`${props.column} img-fluid zoom`} alt="" src={props.photo.url} />
+  <button className="btn-photo" onClick={evt => props.onClick(evt, props.index)}>
+    <img className={`${props.column} img-fluid photo-zoom`} alt="" src={props.photo.url} />
   </button>
 );
 
