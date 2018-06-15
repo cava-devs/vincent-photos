@@ -7,6 +7,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use('/photosBundle', express.static(path.join(__dirname, '../public/dist/bundle.js')));
+app.use('/photosBundleCSS', express.static(path.join(__dirname, '../public/dist/style.css')));
 
 app.get('/restaurant/:restaurantId/photos', (req, res) => {
   const restaurantId = parseInt(req.params.restaurantId, 10);
