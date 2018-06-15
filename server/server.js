@@ -6,7 +6,7 @@ const db = require('../db/index');
 const app = express();
 
 app.use(bodyParser.json());
-app.use('/restaurant/:restaurantId', express.static(path.join(__dirname, '../public')));
+app.use('/photosBundle', express.static(path.join(__dirname, '../public/dist/bundle.js')));
 
 app.get('/restaurant/:restaurantId/photos', (req, res) => {
   const restaurantId = parseInt(req.params.restaurantId, 10);
