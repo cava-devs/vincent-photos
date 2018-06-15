@@ -10,6 +10,7 @@
   margin-left: auto;
   width: 53.5%;
 }
+
 #bootstrap-overrides .photo-view-more {
   color: rgb(202, 69, 72);
   font-size: 14px;
@@ -18,6 +19,7 @@
   padding-left: 400px;  
   margin: auto 0 0 0;
 }
+
 #bootstrap-overrides .photo-project-overlay {
   position: absolute;
   font-size: 20px;
@@ -30,54 +32,61 @@
   color: rgb(245, 239, 239);
   padding: 50%;
 }
+
 .photo-img-overlay {
   position: relative;
   max-width: 92px;
 }
+
 #bootstrap-overrides .col-one {
   width: 139px;
   height: 139px;
   padding: 2px;
   object-fit: cover;
 }
+
 #bootstrap-overrides .col-two {
   width: 276px;
   height: 276px;
   padding: 2px;
   object-fit: cover;
 }
+
 #bootstrap-overrides .col-three {
   width: 92px;
   height: 92px;
   padding: 2px;
   object-fit: cover;
 }
+
 #bootstrap-overrides .col-four {
   width: 92px;
   height: 92px;
   padding: 2px;
   object-fit: cover;
 }
+
 .photo-col {
-  display: inline-block;
+  display: inline-bßlock;
   font-size: 0;
 }
+
 .photo-col:nth-child(1) {
   width: 139px;
-
 }
+
 .photo-col:nth-child(2) {
   width: 276px;
-
 }
+
 .photo-col:nth-child(3) {
   width: 92px;
-
 }
+
 .photo-col:nth-child(4) {
   width: 92px;
-
 }
+
 .photo-zoom {
   padding: 50px;
   transition: transform .3s;
@@ -85,9 +94,11 @@
   height: 100px;
   margin: 0 auto;
 }
+
 .photo-zoom:hover {
   transform: scale(1.05);
 }
+
 .btn-photo {
   background: none;
   color: inherit;
@@ -97,10 +108,11 @@
   cursor: pointer;
   outline: inherit;
 }
+
 .btn-photo:active {
   outline: none;
   border: none;
-  }
+}
   
 .btn-photo:focus {
   outline: 0;

@@ -65,7 +65,7 @@ class PhotoTable extends React.Component {
   }
 
   servePhotos() {
-    axios.get(`photos/restaurant/${this.props.match.params.restaurantId}/photos`)
+    axios.get(`/photos/restaurant/${this.props.match.params.restaurantId}/photos`)
       .then((response) => {
         let conditionalURL;
 
