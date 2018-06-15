@@ -99,9 +99,9 @@ class PhotoTable extends React.Component {
             onMoveNextRequest={this.onMoveNextRequest}
           />
         )}
-        <div className="container">
-          <div className="photo-gallery-header mb-2">
-            <h2>
+        <div className="container col-lg-12">
+          <div className="photo-gallery-header mb-3">
+            <p>
               {this.state.photoCount} Photos
               {this.state.photoCount > 8 &&
                 <ViewMore
@@ -109,7 +109,7 @@ class PhotoTable extends React.Component {
                   onClick={this.onClick}
                 />
               }
-            </h2>
+            </p>
           </div>
         </div>
         <div className="container photo-gallery-table">
