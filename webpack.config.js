@@ -5,6 +5,7 @@ const srcDir = path.join(__dirname, '/client/src');
 const distDir = path.join(__dirname, '/public/dist');
 
 module.exports = {
+  mode: 'production',
   entry: `${srcDir}/index.jsx`,
   resolve: { extensions: ['.js', '.jsx'] },
   output: {
