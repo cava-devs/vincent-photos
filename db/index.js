@@ -1,9 +1,11 @@
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  database: 'cava_table',
+  host: process.env.RDS_HOSTNAME,
+  port: process.env.RDS_PORT,
+  database: process.env.RDS_DB_NAME,
+  user: process.env.RDS_USERNAME,
+  password: process.env.RDS_PASSWORD,
 });
 
 connection.connect();
@@ -19,6 +21,5 @@ const getPhotos = (restaurantID, dataSend) => {
 };
 
 module.exports = {
-  connection,
   getPhotos,
 };
