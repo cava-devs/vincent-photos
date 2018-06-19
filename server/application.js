@@ -6,10 +6,11 @@ const db = require('../db/index');
 const app = express();
 
 app.use(bodyParser.json());
+app.use('/restaurant/:restaurantId', express.static(path.join(__dirname, '../public/index.html')));
 app.use('/photosBundle', express.static(path.join(__dirname, '../public/dist/bundle.js')));
 app.use('/photosBundleCSS', express.static(path.join(__dirname, '../public/style/main.css')));
 
-app.get('/restaurant/:restaurantId/photos', (req, res) => {
+app.get('/photos/restaurant/:restaurantId/photos', (req, res) => {
   const restaurantId = parseInt(req.params.restaurantId, 10);
 
   if (typeof restaurantId !== 'number') {
@@ -18,6 +19,7 @@ app.get('/restaurant/:restaurantId/photos', (req, res) => {
     db.getPhotos(restaurantId, (err, data) => {
       if (err) {
         res.status(500).send('Error: could not retrieve data from db.');
+        console.log(err);
       } else {
         res.status(200).send(data);
       }
