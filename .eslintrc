@@ -23,6 +23,9 @@
                 "checkContextTypes": false,
                 "checkChildContextTypes": false
             }
+        ],
+        "react/destructuring-assignment": [
+            "warning"
         ]
     },
     "extends": [
